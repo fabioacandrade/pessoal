@@ -1,0 +1,27 @@
+a)o que o codigo abaixo faz?
+resposta: o codigo faz comparações para definir se o caractere informado é uma vogal
+b)Um aluno desenvolveu o código abaixo, corrija-o:
+resposta:
+    boolean isConsoante(String s, int n){
+        boolean resp= true;
+        if (n != s.length()){
+            if (s.charAt(n)<'0' || s.charAt(n)>'9'){
+                if (isVogal(s.charAt(n)) == true){
+                    resp= false;
+                } else {
+                    resp=isConsoante(s, n + 1);
+                }
+            } else {
+                resp=false;
+            }
+        }
+        return resp;
+    }
+
+c)Qual a diferença entre os dois metodos abaixo
+resposta: pré e pós decrementação.
+d)o que o prograa abaixo mostra na tela?
+resposta: a diferença na pós-incrementação de cada tipo (byte,short,int,long)
+e)por que o codigo imprime [46-11]?
+resposta: pois há um deslocamento nos bits, ocasionando em uma divisão ou uma multiplicação por 2 
+

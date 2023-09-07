@@ -1,0 +1,16 @@
+1) • Um estudante de Algoritmos e Estruturas de Dados (em JAVA) implementou uma 
+classe Hora, cujo construtor recebe e armazena uma hora, minuto e segundo. O que 
+acontece se a classe X abaixo for colocada na mesma pasta que a classe Hora?r:B
+2) Seja a classe X abaixo e a Animal implementada e não mostrada, avalie as afirmações 
+listadas a seguir. 
+• I – Possivelmente, a Classe Animal tem três 
+ ou mais atributos. Além disso, no construtor
+ com três parâmetros, o atributo que recebe 
+o valor do primeiro parâmetro pode ser do tipo
+ String e os que recebem os outros dois 
+ podem ser do tipo int.
+II - O comando System.out.println(b.nome) imprime a palavra "Gato".
+III - A classe Animal deve ter um atributo idade e esse será obrigatoriamente privado.
+IV - Na classe animal o atributo nome tem que ser estático.
+R:a
+

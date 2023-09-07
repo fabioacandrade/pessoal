@@ -1,0 +1,7 @@
+Guia_0101.txt
+808674 - Fábio Antônio Caldeira Andrade
+a)11010
+b)110101
+c)1011010011
+d)100111000
+e)101101101
