@@ -1,0 +1,5 @@
+class Busca{
+	int n=MyIO.readInt();
+	int resp=n*4;
+	MyIO.println(resp);
+}
