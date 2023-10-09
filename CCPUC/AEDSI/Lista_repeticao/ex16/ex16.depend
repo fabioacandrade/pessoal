@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1680039007 source:d:\workshop\lista_repeticao\ex16\main.c
+	<stdio.h>
+	<stdlib.h>
+

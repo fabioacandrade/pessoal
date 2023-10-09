@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1677863132 source:d:\workshop\calculadora ez\main.c
+	<stdio.h>
+	<stdlib.h>
+
+1684549090 source:d:\workshop\unidade 2\calculadora ez\main.c
+	<stdio.h>
+	<stdlib.h>
+

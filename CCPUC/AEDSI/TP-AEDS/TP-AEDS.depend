@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1688179215 source:d:\workshop\tp-aeds\main.cpp
+	<iostream>
+	<string.h>
+
