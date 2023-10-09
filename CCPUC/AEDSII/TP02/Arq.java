@@ -44,6 +44,12 @@ public class Arq
       return openRead(nomeArq, charsetArquivo);
    }
 
+/**
+ * Opens a file for reading with the given file name and character set.
+ * @param nomeArq the name of the file to be opened for reading
+ * @param charset the character set to be used for reading the file
+ * @return true if the file was successfully opened for reading, false otherwise
+ */
 	public static boolean openRead(String nomeArq, String charset) {
       boolean resp = false;
       close();
