@@ -32,7 +32,7 @@ void colocaEspacos(char* str){
 }
 
 void preencheArray(Jogador *jogador){
-    FILE *arq = fopen("players.csv", "r");
+    FILE *arq = fopen("/tmp/players.csv", "r");
 
     char str[1000];
     
@@ -90,9 +90,45 @@ void preencheArray(Jogador *jogador){
     fclose(arq);
 }
 
+void swap(Jogador *jogador,int i,int j,int *countTrocas){
+    Jogador aux = jogador[i];
+    jogador[i]=jogador[j];
+    jogador[j]=aux;
+    *countTrocas+=3;
+}
+
+int getMaior(Jogador array[], int n ,int *countComparacoes){
+    int maior = array[0].id;
+    for(int i = 1; i < n; i++){
+        countComparacoes++;
+        if(array[i].id > maior){
+            maior = array[i].id;
+        }
+    }
+
+    return maior;
+}
+
+void insercaoParcial(Jogador *jogador,int n,int *countComparacoes,int *countTrocas){
+    for(int i=1;i<n;i++){
+        Jogador tmp = jogador[i];
+        int j=i-1;
+        while(j >= 0 && (jogador[j].anoNascimento > tmp.anoNascimento || (jogador[j].anoNascimento == tmp.anoNascimento && strcmp(jogador[j].nome, tmp.nome) > 0))){
+            jogador[j+1]=jogador[j];
+            j--;
+            *countComparacoes+=2;
+            *countTrocas+=1;
+        }
+        jogador[j+1]=tmp;
+        *countTrocas+=1;
+    }
+}
+
+
+
+
 int main(){
-    float inicioTmp,fimTmp;
-    inicioTmp=clock();
+    int countComparacoes=0,countTrocas=0;
 
     Jogador *jogador = (Jogador*) malloc(3923 * sizeof(Jogador));
     Jogador *copia = (Jogador*) malloc(3923 * sizeof(Jogador));
@@ -116,54 +152,15 @@ int main(){
     }
     
 
-    //ordenando o array copia
-    for(int i=0;i<countCopia;i++){
-        for(int j=0;j<countCopia-1;j++){
-            if(strcmp(copia[j].nome,copia[j+1].nome)>0){
-                Jogador aux = copia[j];
-                copia[j]=copia[j+1];
-                copia[j+1]=aux;
-            }
-        }
-    }
+    //chamando o inserçãoParcial
+    insercaoParcial(copia,countCopia,&countComparacoes,&countTrocas);
+    
     
 
-    //realizando a pesquisa binaria
-    char nome[50];
-    int countComparacoes=0;
-    while(1){
-        scanf(" %[^\n]",nome);
-        if(!strcmp(nome,"FIM")){
-            break;
-        }
-        else{
-            int inicio=0,fim=countCopia-1,meio;
-            int achou=0;
-            while(inicio<=fim){
-                countComparacoes++;
-                meio=(inicio+fim)/2;
-                countComparacoes++;
-                if(strcmp(nome,copia[meio].nome)==0){
-                    printf("SIM\n");
-                    achou=1;
-                    break;
-                }
-                else if(strcmp(nome,copia[meio].nome)<0){
-                    countComparacoes++;
-                    fim=meio-1;
-                }
-                else{
-                    countComparacoes++;
-                    inicio=meio+1;
-                }
-            }
-            if(!achou){
-                printf("NAO\n");
-            }
-        }
+    for(int i=0;i<10;i++){
+        printf("[%d ## %s ## %d ## %d ## %d ## %s ## %s ## %s]\n",copia[i].id,copia[i].nome,copia[i].altura,copia[i].peso,copia[i].anoNascimento,copia[i].universidade,copia[i].cidadeNascimento,copia[i].estadoNascimento);
     }
-    fimTmp=clock();
-    FILE *arq = fopen("matricula_binaria.txt", "w");
-    fprintf(arq,"808674\t%lf\t%d",(fimTmp-inicioTmp)/CLOCKS_PER_SEC,countComparacoes);
+    
+    
     
 }

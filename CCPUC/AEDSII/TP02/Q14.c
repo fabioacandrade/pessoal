@@ -90,9 +90,68 @@ void preencheArray(Jogador *jogador){
     fclose(arq);
 }
 
+void swap(Jogador *jogador,int i,int j,int *countTrocas){
+    Jogador aux = jogador[i];
+    jogador[i]=jogador[j];
+    jogador[j]=aux;
+    *countTrocas+=3;
+}
+
+int getMaior(Jogador array[], int n ,int *countComparacoes){
+    int maior = array[0].id;
+    for(int i = 1; i < n; i++){
+        countComparacoes++;
+        if(array[i].id > maior){
+            maior = array[i].id;
+        }
+    }
+
+    return maior;
+}
+
+void radcountingSort(Jogador array[], int n, int exp,int *countComparacoes,int *countTrocas){ 
+    int count[10];
+    Jogador output[n];
+
+    for(int i = 0; i < 10; i++){
+        count[i] = 0;
+    }
+
+    for(int i = 0; i < n; i++){
+        count[(array[i].id/exp) % 10]++;
+    }
+
+    for(int i = 1; i < 10; i++){
+        count[i] += count[i-1];
+    }
+
+    for(int i = n-1; i >= 0; i--){
+        output[count[(array[i].id/exp) % 10] - 1] = array[i];
+        count[(array[i].id/exp) % 10]--;
+        countTrocas++;
+    }
+
+    for(int i = 0; i < n; i++){
+        array[i] = output[i];
+        countTrocas++;
+    }
+}
+
+//algoritmo de ordenacao por radixsort com a chave sendo id 
+void radixsort(Jogador *jogador,int countCopia,int *countTrocas,int *countComparacoes){
+    int m = getMaior(jogador, countCopia,countComparacoes);
+
+    for(int exp = 1; m/exp > 0; exp *= 10){
+        radcountingSort(jogador, countCopia, exp,countComparacoes,countTrocas);
+    }
+}
+
+
+
+
 int main(){
+    int countComparacoes=0,countTrocas=0;
     float inicioTmp,fimTmp;
-    inicioTmp=clock();
 
     Jogador *jogador = (Jogador*) malloc(3923 * sizeof(Jogador));
     Jogador *copia = (Jogador*) malloc(3923 * sizeof(Jogador));
@@ -116,54 +175,16 @@ int main(){
     }
     
 
-    //ordenando o array copia
+    //chamando o radixsort
+    inicioTmp=clock();
+    radixsort(copia,countCopia,&countTrocas,&countComparacoes);
+    fimTmp=clock();
+
     for(int i=0;i<countCopia;i++){
-        for(int j=0;j<countCopia-1;j++){
-            if(strcmp(copia[j].nome,copia[j+1].nome)>0){
-                Jogador aux = copia[j];
-                copia[j]=copia[j+1];
-                copia[j+1]=aux;
-            }
-        }
+        printf("[%d ## %s ## %d ## %d ## %d ## %s ## %s ## %s]\n",copia[i].id,copia[i].nome,copia[i].altura,copia[i].peso,copia[i].anoNascimento,copia[i].universidade,copia[i].cidadeNascimento,copia[i].estadoNascimento);
     }
     
-
-    //realizando a pesquisa binaria
-    char nome[50];
-    int countComparacoes=0;
-    while(1){
-        scanf(" %[^\n]",nome);
-        if(!strcmp(nome,"FIM")){
-            break;
-        }
-        else{
-            int inicio=0,fim=countCopia-1,meio;
-            int achou=0;
-            while(inicio<=fim){
-                countComparacoes++;
-                meio=(inicio+fim)/2;
-                countComparacoes++;
-                if(strcmp(nome,copia[meio].nome)==0){
-                    printf("SIM\n");
-                    achou=1;
-                    break;
-                }
-                else if(strcmp(nome,copia[meio].nome)<0){
-                    countComparacoes++;
-                    fim=meio-1;
-                }
-                else{
-                    countComparacoes++;
-                    inicio=meio+1;
-                }
-            }
-            if(!achou){
-                printf("NAO\n");
-            }
-        }
-    }
-    fimTmp=clock();
-    FILE *arq = fopen("matricula_binaria.txt", "w");
-    fprintf(arq,"808674\t%lf\t%d",(fimTmp-inicioTmp)/CLOCKS_PER_SEC,countComparacoes);
+    FILE *arq = fopen("matricula_radixsort.txt", "w");
+    fprintf(arq,"808674\t%d\t%d\t%f",countComparacoes,countTrocas,(fimTmp-inicioTmp)/CLOCKS_PER_SEC);
     
 }

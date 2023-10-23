@@ -90,9 +90,36 @@ void preencheArray(Jogador *jogador){
     fclose(arq);
 }
 
+//algoritmo de ordenação shellsort por peso e em caso de empate, utilizando o nome como chave
+void shellsort(Jogador *jogador,int n,int *countComparacoes,int *countTrocas){
+    int i,j;
+    Jogador aux;
+    int h=1;
+
+    while(h<n){
+        h=3*h+1;
+    }
+    while(h>1){
+        h=h/3;
+        for(i=h;i<n;i++){
+            aux=jogador[i];
+            j=i;
+            while(j>=h && (jogador[j-h].peso>aux.peso || (jogador[j-h].peso==aux.peso && strcmp(jogador[j-h].nome,aux.nome)>0))){
+                jogador[j]=jogador[j-h];
+                j=j-h;
+                (*countComparacoes)++;
+                (*countTrocas)++;
+            }
+            jogador[j]=aux;
+            (*countTrocas)++;
+        }
+    }
+}
+
+
 int main(){
+    int countComparacoes=0,countTrocas=0;
     float inicioTmp,fimTmp;
-    inicioTmp=clock();
 
     Jogador *jogador = (Jogador*) malloc(3923 * sizeof(Jogador));
     Jogador *copia = (Jogador*) malloc(3923 * sizeof(Jogador));
@@ -116,54 +143,16 @@ int main(){
     }
     
 
-    //ordenando o array copia
+    //ordenando o array copia Recursivamente por shellsort com a chave sendo o peso
+    inicioTmp=clock();
+    shellsort(copia,countCopia,&countComparacoes,&countTrocas);
+    fimTmp=clock();
+
     for(int i=0;i<countCopia;i++){
-        for(int j=0;j<countCopia-1;j++){
-            if(strcmp(copia[j].nome,copia[j+1].nome)>0){
-                Jogador aux = copia[j];
-                copia[j]=copia[j+1];
-                copia[j+1]=aux;
-            }
-        }
+        printf("[%d ## %s ## %d ## %d ## %d ## %s ## %s ## %s]\n",copia[i].id,copia[i].nome,copia[i].altura,copia[i].peso,copia[i].anoNascimento,copia[i].universidade,copia[i].cidadeNascimento,copia[i].estadoNascimento);
     }
     
-
-    //realizando a pesquisa binaria
-    char nome[50];
-    int countComparacoes=0;
-    while(1){
-        scanf(" %[^\n]",nome);
-        if(!strcmp(nome,"FIM")){
-            break;
-        }
-        else{
-            int inicio=0,fim=countCopia-1,meio;
-            int achou=0;
-            while(inicio<=fim){
-                countComparacoes++;
-                meio=(inicio+fim)/2;
-                countComparacoes++;
-                if(strcmp(nome,copia[meio].nome)==0){
-                    printf("SIM\n");
-                    achou=1;
-                    break;
-                }
-                else if(strcmp(nome,copia[meio].nome)<0){
-                    countComparacoes++;
-                    fim=meio-1;
-                }
-                else{
-                    countComparacoes++;
-                    inicio=meio+1;
-                }
-            }
-            if(!achou){
-                printf("NAO\n");
-            }
-        }
-    }
-    fimTmp=clock();
-    FILE *arq = fopen("matricula_binaria.txt", "w");
-    fprintf(arq,"808674\t%lf\t%d",(fimTmp-inicioTmp)/CLOCKS_PER_SEC,countComparacoes);
+    FILE *arq = fopen("matricula_shellsort.txt", "w");
+    fprintf(arq,"808674\t%d\t%d\t%f",countComparacoes,countTrocas,(fimTmp-inicioTmp)/1000);
     
 }
