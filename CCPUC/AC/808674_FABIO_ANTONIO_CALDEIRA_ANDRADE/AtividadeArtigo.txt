@@ -1,0 +1,95 @@
+Fábio Antônio Caldeira Andrade - 808674
+
+1)
+Artigo relacionado aos citados no enunciado: 
+URL: https://si2.epfl.ch/~demichel/publications/archive/1993/DTCvol10iss3Sep93pg29.pdf
+
+Sobre o artigo citado: 
+O artigo aborda a complexidade crescente no design de sistemas e como o uso de componentes pré-projetados, como microprocessadores de propósito geral, pode simplificar o desenvolvimento de hardware.
+Embora os desafios de projetar sistemas com processadores e circuitos integrados específicos para aplicativos não sejam novos, a síntese assistida por computador de sistemas heterogêneos ou mistos apresenta desafios únicos. 
+Os autores demonstram que é viável sintetizar sistemas heterogêneos ao usar restrições de tempo para alocar tarefas entre hardware e software, garantindo que os requisitos de desempenho sejam atendidos. 
+Eles usam a linguagem de descrição de hardware HardwareC para capturar a funcionalidade do sistema e discutem a síntese de um coprocessador de rede baseado em Ethernet como um exemplo prático. 
+Em resumo, o artigo explora como projetar sistemas complexos de forma eficaz, combinando hardware e software, e demonstra a aplicabilidade dessa abordagem por meio de um exemplo de síntese de hardware.
+
+
+2)
+Autores do artigo: 
+R.K. Gupta (University of Stanford, USA);
+G. De Micheli (University of Stanford, USA).
+
+Referencias:
+1. Program Implementation Schemes for Hardware-Software Systems
+2. CSL Tech. Report
+3. Silicon Compilation
+4. High-Level VLSI Synthesis
+5. Partial Ordering of Event Sets and Their Application to Prototyping Concurrent Timed Systems
+6. The Olympus Synthesis System for Digital Design
+7. Compilation of a Single Specification Into Hardware and Software
+8. Synthesis of the Hardware/Software Interface in Microcontroller-Based Systems
+9. Synthesis of Mixed Hardware-Software Implementations from CFSM Specifications
+10. Ein Softwareorientierter Ansatz zum Hardware-Software CoEntwurf" [A Software-oriented Approach to Hardware]
+
+Citações:
+1. "Workload Distribution on Heterogeneous Platforms"
+2. "Uncertainty Theory Based Reliability-Centric Cyber-Physical System Design"
+3. "Efficient Hardware/Software partitioning for Heterogeneous Embedded Systems"
+4. "A Parallel Genetic Algorithm With Dispersion Correction for HW/SW Partitioning on Multi-Core CPU and Many-Core GPU"
+5. "Cyber–Physical Codesign at the Functional Level for Multidomain Automotive Systems"
+6. "Evolutionary trends in embedded system design"
+7. "Prototyping Wearables: A Code-First Approach to the Design of Embedded Systems"
+8. "A new hardware/software partitioning technique"
+9. "GMA: a high speed metaheuristic algorithmic approach to hardware software partitioning for Low-cost SoCs"
+10. "Dynamic run-time hardware/software scheduling for 3D reconfigurable SoC"
+
+
+3)
+ASIC(Application-Specific Integrated Circuit):
+-ASIC é um circuito integrado projetado para uma aplicação específica.
+-Diferente de CPUs ou GPUs, que são mais genéricos, ASICs são construídos sob medida para desempenhar uma função específica.
+ASSP (Application-Specific Standard Product):
+-ASSP é um circuito integrado projetado para atender a uma classe específica de aplicações, em oposição a uma aplicação única.
+-São semelhantes aos ASICs, mas podem ser usados em várias aplicações dentro de uma categoria específica.
+SPLD (Simple Programmable Logic Device):
+-SPLD é um dispositivo lógico programável simples.
+-Esses dispositivos podem ser programados para realizar funções lógicas personalizadas, mas têm capacidades limitadas em comparação com CPLDs e FPGAs.
+CPLD (Complex Programmable Logic Device):
+-CPLD é um dispositivo lógico programável complexo.
+-Eles são usados para implementar funções lógicas mais complexas, geralmente usando uma matriz de termos programáveis.
+SOC (System-on-Chip):
+-SOC é um conceito de design que coloca todos os componentes de um sistema em um único chip.
+Isso inclui CPU, memória, controladores e periféricos, tornando-o altamente integrado e eficiente em termos de espaço e energia.
+FPGA (Field-Programmable Gate Array):
+-FPGA é um dispositivo programável que contém uma matriz de portas lógicas interconectáveis.
+-Eles podem ser programados para realizar qualquer função lógica desejada.
+-São usados em prototipagem rápida, desenvolvimento de hardware personalizado e em situações em que a reconfiguração é necessária.
+
+
+4)
+Termo	Significado			Características Principais
+PROM	Programmable Read-Only Memory	- Armazena dados permanentes.
+					- Os dados são definidos durante a fabricação.
+					- Não é reprogramável após a fabricação.
+
+PLA	Programmable Logic Array	- Implementa funções lógicas complexas.
+					- Os termos programáveis permitem flexibilidade.
+					- Reconfigurável, mas com limitações.
+
+PAL	Programmable Array Logic	- Implementa funções lógicas simples a médias.
+					- Mais simples que um PLA, mas menos flexível.
+					- Reconfigurável, mas com limitações.
+
+
+5)
+Termo	Significado				Características Principais
+
+CPLD	Complex Programmable Logic Device	- Projetado para tarefas de lógica complexas.
+						- Usa uma matriz de termos programáveis.
+						- Menos flexível em termos de reprogramação.
+						- Adequado para sistemas embarcados e sistemas que
+						  requerem alta densidade de portas lógicas.
+
+FPGA	Field-Programmable Gate Array		- Oferece alta flexibilidade na reconfiguração.
+						- Usa uma matriz de portas lógicas configuráveis.
+						- Adequado para prototipagem rápida e desenvolvimento
+					  	  de hardware personalizado.
+						- Pode ser reprogramado para diferentes funções.
