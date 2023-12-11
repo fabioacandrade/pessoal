@@ -1,0 +1,24 @@
+// Guia_1507.txt
+// 808674 - Fábio Andrade
+//
+// Calcular dado03 = dado01 % 2 + dado02 / 4
+// Usar dados com 8 bits.
+// DICA: Usar deslocamentos/rotações.
+//
+// Area de código ; Significado // Comentario
+ LXI H, dado01 ; HL <- addr(dado01) // endereco do dado01
+ MOV A, M ; A <- MEM [HL] // A = MEM [dado01]
+ ANI 01h ; A <- A & 01h (pega o bit menos significativo)
+ INX H ; HL <- HL+1 // endereco do dado02
+ MOV B, M ; B <- MEM [HL] // B = MEM [dado02]
+ DCR B ; B <- B - 1 (para dividir por 4)
+ RLC ; Rotaciona o A para a esquerda (coloca o bit menos significativo no bit mais significativo)
+ ADD B ; A <- A + B (soma o bit menos significativo com dado02/4)
+ INX H ; HL <- HL+1 // endereco do dado03
+ STA dado03 ; MEM [dado03] <- A // MEM [dado03] = A
+ HLT ; halt // parar
+
+// Area de dados
+ dado01: 05h ; primeiro dado em hexadecimal
+ dado02: 08h ; segundo dado em hexadecimal
+ dado03: 00h ; resultado em hexadecimal

@@ -1,0 +1,37 @@
+; Guia_1607.txt
+; 808674 - Fábio Andrade
+;
+; Programa para calcular o fatorial de um dado de 8 bits
+; Dado de entrada: dado01
+; Resultado: dado02 = FAT(dado01) (fatorial)
+;
+JMP MAIN ; Desvio para a área principal do programa
+
+; Função para calcular o fatorial
+; A função recebe o dado em A (dado01) e retorna o fatorial em A
+; @return A (fatorial)
+; @param A (dado01)
+MAIN: LXI H, 0050 ; HL = 0050h (endereço de dado01)
+MOV A, M ; A = MEM[HL] (carrega dado01)
+
+CALL FACTORIAL ; Chama a função de cálculo do fatorial
+
+STA 0052 ; MEM[0052] = A (armazena o fatorial em dado02)
+HLT ; Termina a execução do programa
+
+; Função de cálculo do fatorial
+; A função recebe o dado em A (dado01) e retorna o fatorial em A
+; @return A (fatorial)
+; @param A (dado01)
+FACTORIAL: MVI B, 01 ; B = 1 (inicializa o multiplicador)
+MVI C, 01 ; C = 1 (inicializa o acumulador)
+
+LOOP: CMP B ; Compara A e B
+JZ DONE ; Se A é igual a B, termina o cálculo
+JNC NO_MUL ; Se não há carry, pula para NO_MUL
+MUL C ; Multiplica C por A
+NO_MUL: INX C ; Incrementa o acumulador
+INX B ; Incrementa o multiplicador
+JMP LOOP ; Repete o loop
+
+DONE: RET ; Retorna com o fatorial em A

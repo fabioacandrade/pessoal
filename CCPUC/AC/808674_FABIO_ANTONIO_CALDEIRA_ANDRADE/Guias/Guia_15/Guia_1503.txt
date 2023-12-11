@@ -1,0 +1,24 @@
+// Guia_1503.txt
+// 808674 - Fábio Andrade
+//
+// Calcular dado04 = dado01 - dado02 - dado03
+// Usar dados com 8 bits codificados em BCD.
+// DICA: Se passar de 9, precisará converter a saída.
+//
+// Area de código ; Significado // Comentario
+ LXI H, dado01 ; HL <- addr(dado01) // endereco do dado01
+ MOV A, M ; A <- MEM [HL] // A = MEM [dado01]
+ DAA ; Ajuste decimal após a adição de BCD
+ MOV B, A ; B <- A (salva o resultado temporariamente)
+ INX H ; HL <- HL+1 // endereco do dado02
+ MOV A, M ; A <- MEM [HL] // A = MEM [dado02]
+ DAA ; Ajuste decimal após a adição de BCD
+ SUB B ; A <- A - resultado BCD
+ STA dado04 ; MEM [dado04] <- A // MEM [dado04] = A
+ HLT ; halt // parar
+
+// Area de dados
+ dado01: 09h ; primeiro dado em BCD
+ dado02: 03h ; segundo dado em BCD
+ dado03: 02h ; terceiro dado em BCD
+ dado04: 00h ; resultado em BCD

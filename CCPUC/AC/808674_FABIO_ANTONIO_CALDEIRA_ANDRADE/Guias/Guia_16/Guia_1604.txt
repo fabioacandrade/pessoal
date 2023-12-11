@@ -1,0 +1,47 @@
+; Guia_1604.txt
+; 808674 - Fábio Andrade
+;
+; Programa para encontrar o maior valor de um arranjo usando Bubble Sort
+;
+JMP MAIN ; Desvio para a área principal do programa
+
+; Função para Bubble Sort e encontrar o maior valor
+; @param HL aponta para o início do arranjo
+; @param DE é o tamanho do arranjo
+MAIN: LXI H, ARRAY ; HL aponta para o início do arranjo
+LXI D, SIZE ; DE é o tamanho do arranjo
+
+CALL BUBBLE_SORT ; Chama a função Bubble Sort
+
+LXI H, ARRAY ; HL aponta novamente para o início do arranjo
+MOV A, M ; Carrega o primeiro elemento do arranjo
+STA 0052 ; MEM[0052] = A (armazena o maior valor)
+HLT ; Termina a execução do programa
+
+; Função Bubble Sort e encontrar o maior valor
+; @param HL aponta para o início do arranjo
+; @param DE é o tamanho do arranjo
+BUBBLE_SORT: DCR D ; Decrementa o contador do tamanho do arranjo
+JZ DONE ; Se D = 0, a ordenação está completa
+
+LXI B, 00 ; BC é o índice do arranjo
+LOOP: MOV A, M ; A = MEM[HL + BC]
+INX B ; Incrementa o índice do arranjo
+CMP M ; Compara A com o próximo elemento do arranjo
+JC SWAP ; Se A < próximo, troca os elementos
+JMP LOOP ; Repete o loop
+
+SWAP: MOV A, M ; A = MEM[HL + BC]
+DCX B ; Decrementa o índice do arranjo
+MOV B, A ; B = A
+MOV A, M ; A = MEM[HL + BC]
+MOV M, B ; Troca os elementos no arranjo
+INX B ; Incrementa o índice do arranjo
+MOV M, A ; Troca os elementos no arranjo
+JMP LOOP ; Repete o loop
+
+DONE: RET ; Retorna
+
+ARRAY: DB 8, 4, 2, 7, 1, 9, 3, 6 ; Exemplo de arranjo
+SIZE: EQU $ - ARRAY ; Tamanho do arranjo
+

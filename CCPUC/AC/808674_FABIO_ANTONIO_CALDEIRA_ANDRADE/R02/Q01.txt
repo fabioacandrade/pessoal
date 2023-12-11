@@ -1,0 +1,16 @@
+Fábio Andrade - 808674
+
+a.) 
+SoP(Da) = a'b'c' + a'bc' = a'c'
+SoP(Sb) = a'b'c + ab'c = b'c
+SoP(Rb) = a'bc + abc'
+
+b.)
+SoP(Ja) = a'b'c' + a'bc' = a'c'
+SoP(Jb) = a'b'c + ab'c = b'c
+SoP(Ka) = a'b'c' + ab'c + abc' + abc = a
+SoP(Kb) = a'bc + abc'
+
+c.)
+SoP(Ta) = a'b'c' + a'bc' + ab'c' + ab'c + abc' + abc = a'c' + ab' + ab = a'c' + a
+SoP(Tb) = abc' + ab'c' + ab'c' + ab'c + abc' = ac' + ab'c + abc'

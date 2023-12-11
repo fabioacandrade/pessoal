@@ -1,0 +1,42 @@
+; Guia_1602.txt
+; 808674 - Fábio Andrade
+;
+; Programa para calcular o quociente inteiro (IDIV) entre dois dados de 8 bits cada
+; Dados de entrada: dado01 (dividendo), dado02 (divisor)
+; Resultado: dado03 = dado01 / dado02 (quociente)
+;
+JMP MAIN ; Desvio para a área principal do programa
+
+; Função para realizar a divisão inteira (IDIV)
+; A função recebe os dados em A (dado01) e B (dado02) e retorna o quociente em A
+; @return A (quociente)
+; @param A (dado01)
+; @param B (dado02)
+MAIN: LXI H, 0050 ; HL = 0050h (endereço de dado01)
+MOV A, M ; A = MEM[HL] (carrega dado01)
+INX H ; HL = HL + 1 (avança para dado02)
+MOV B, M ; B = MEM[HL] (carrega dado02)
+
+CALL IDIV ; Chama a função de divisão inteira
+STA 0052 ; MEM[0052] = A (armazena o quociente em dado03)
+HLT ; Termina a execução do programa
+
+; Função de divisão inteira (IDIV)
+; A função recebe os dados em A (dado01) e B (dado02) e retorna o quociente em A
+; @return A (quociente)
+; @param A (dado01)
+; @param B (dado02)
+IDIV: MVI C, 00 ; C = 0 (inicializa o quociente)
+MVI D, 08 ; D = 8 (número de bits a serem divididos)
+
+LOOP: CMP B ; Compara A e B
+JZ ZERO_CHECK ; Se A é igual a B, pula para ZERO_CHECK
+JNC NO_SUB ; Se não há carry, pula para NO_SUB
+SUB B ; Subtrai B de A
+INX C ; Incrementa o quociente
+NO_SUB: RLC ; Rotação para a esquerda (shift left)
+DCR D ; Decrementa o contador de bits
+JNZ LOOP ; Se D != 0, repete o loop
+
+ZERO_CHECK: MOV A, C ; Move o quociente para A
+RET ; Retorna com o quociente em A

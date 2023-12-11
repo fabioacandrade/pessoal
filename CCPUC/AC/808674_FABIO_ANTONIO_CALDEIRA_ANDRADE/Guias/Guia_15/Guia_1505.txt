@@ -1,0 +1,28 @@
+// Guia_1505.txt
+// 808674 - Fábio Andrade
+//
+// Calcular dado03 = dado01 * 4 + dado02 / 2
+// Usar dados com 8 bits.
+// DICA: Usar deslocamentos/rotações.
+//
+// Area de código ; Significado // Comentario
+ LXI H, dado01 ; HL <- addr(dado01) // endereco do dado01
+ MOV A, M ; A <- MEM [HL] // A = MEM [dado01]
+ X4 ; A <- A << 2 (multiplicação por 4)
+ INX H ; HL <- HL+1 // endereco do dado02
+ MOV B, M ; B <- MEM [HL] // B = MEM [dado02]
+ DCR B ; B <- B - 1 (para dividir por 2)
+ MOV C, B ; C <- B (salva o divisor temporariamente)
+ MOV B, A ; B <- A (salva o multiplicando temporariamente)
+ MOV A, C ; A <- C (recupera o divisor)
+ DIV B ; A <- A / B (divisão por 2)
+ MOV B, A ; B <- A (salva o resultado temporariamente)
+ INX H ; HL <- HL+1 // endereco do dado03
+ MOV A, B ; A <- resultado da divisão
+ STA dado03 ; MEM [dado03] <- A // MEM [dado03] = A
+ HLT ; halt // parar
+
+// Area de dados
+ dado01: 03h ; primeiro dado em hexadecimal
+ dado02: 06h ; segundo dado em hexadecimal
+ dado03: 00h ; resultado em hexadecimal

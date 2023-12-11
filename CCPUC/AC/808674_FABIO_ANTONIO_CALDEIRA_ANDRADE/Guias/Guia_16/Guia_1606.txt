@@ -1,0 +1,33 @@
+; Guia_1606.txt
+; 808674 - Fábio Andrade
+;
+; Programa para calcular o quadrado de um dado de 8 bits
+; Dado de entrada: dado01
+; Resultado: dado02 = SQR(dado01) (quadrado)
+;
+JMP MAIN ; Desvio para a área principal do programa
+
+; Função para calcular o quadrado
+; A função recebe o dado em A (dado01) e retorna o quadrado em A
+; @return A (quadrado)
+; @param A (dado01)
+MAIN: LXI H, 0050 ; HL = 0050h (endereço de dado01)
+MOV A, M ; A = MEM[HL] (carrega dado01)
+
+CALL SQUARE ; Chama a função de cálculo do quadrado
+
+STA 0052 ; MEM[0052] = A (armazena o quadrado em dado02)
+HLT ; Termina a execução do programa
+
+; Função de cálculo do quadrado
+; A função recebe o dado em A (dado01) e retorna o quadrado em A
+; @return A (quadrado)
+; @param A (dado01)
+SQUARE: MOV B, A ; B = A (cópia do dado01)
+MVI C, 00 ; C = 0 (inicializa o acumulador)
+
+LOOP: ADD B ; Soma B ao acumulador
+DCR B ; Decrementa o dado01
+JNZ LOOP ; Se B != 0, repete o loop
+
+RET ; Retorna com o quadrado em A

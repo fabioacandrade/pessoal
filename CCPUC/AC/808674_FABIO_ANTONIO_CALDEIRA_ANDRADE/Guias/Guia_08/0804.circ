@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project source="2.16.1.4.jar" version="1.0">
+  This file is intended to be loaded by Logisim http://logisim.altervista.org
+
+  <lib desc="#Wiring" name="0"/>
+  <lib desc="#Gates" name="1"/>
+  <lib desc="#TTL" name="2"/>
+  <lib desc="#Plexers" name="3">
+    <tool name="Multiplexer">
+      <a name="enable" val="false"/>
+    </tool>
+    <tool name="Demultiplexer">
+      <a name="enable" val="false"/>
+    </tool>
+    <tool name="Decoder">
+      <a name="enable" val="false"/>
+    </tool>
+  </lib>
+  <lib desc="#Arithmetic" name="4"/>
+  <lib desc="#Memory" name="5">
+    <tool name="ROM">
+      <a name="contents">addr/data: 8 8
+0
+</a>
+    </tool>
+  </lib>
+  <lib desc="#I/O" name="6"/>
+  <lib desc="#Base" name="7">
+    <tool name="Text Tool">
+      <a name="text" val=""/>
+      <a name="font" val="Dialog plain 12"/>
+      <a name="color" val="#000000"/>
+      <a name="halign" val="center"/>
+      <a name="valign" val="base"/>
+    </tool>
+  </lib>
+  <main name="main"/>
+  <options>
+    <a name="gateUndefined" val="ignore"/>
+    <a name="simlimit" val="1000"/>
+    <a name="simrand" val="0"/>
+  </options>
+  <mappings>
+    <tool lib="7" map="Button2" name="Poke Tool"/>
+    <tool lib="7" map="Button3" name="Menu Tool"/>
+    <tool lib="7" map="Ctrl Button1" name="Menu Tool"/>
+  </mappings>
+  <toolbar>
+    <tool lib="7" name="Poke Tool"/>
+    <tool lib="7" name="Edit Tool"/>
+    <sep/>
+    <tool lib="7" name="Text Tool">
+      <a name="text" val=""/>
+      <a name="font" val="Dialog plain 12"/>
+      <a name="color" val="#000000"/>
+      <a name="halign" val="center"/>
+      <a name="valign" val="base"/>
+    </tool>
+    <tool lib="0" name="Pin">
+      <a name="tristate" val="false"/>
+    </tool>
+    <tool lib="0" name="Pin">
+      <a name="facing" val="south"/>
+      <a name="output" val="true"/>
+    </tool>
+    <tool lib="1" name="NOT Gate"/>
+    <tool lib="1" name="AND Gate"/>
+    <tool lib="1" name="OR Gate"/>
+  </toolbar>
+  <circuit name="main">
+    <a name="circuit" val="main"/>
+    <a name="clabel" val=""/>
+    <a name="clabelup" val="east"/>
+    <a name="clabelfont" val="Dialog plain 12"/>
+    <a name="clabelcolor" val="#000000"/>
+    <wire from="(280,170)" to="(280,200)"/>
+    <wire from="(180,170)" to="(280,170)"/>
+    <wire from="(280,220)" to="(280,250)"/>
+    <wire from="(180,250)" to="(280,250)"/>
+    <wire from="(360,130)" to="(360,210)"/>
+    <wire from="(320,210)" to="(360,210)"/>
+    <wire from="(560,220)" to="(600,220)"/>
+    <wire from="(600,140)" to="(600,220)"/>
+    <wire from="(520,180)" to="(520,210)"/>
+    <wire from="(520,230)" to="(520,260)"/>
+    <wire from="(420,180)" to="(520,180)"/>
+    <wire from="(420,260)" to="(520,260)"/>
+    <wire from="(330,330)" to="(330,410)"/>
+    <wire from="(290,410)" to="(330,410)"/>
+    <wire from="(250,370)" to="(250,400)"/>
+    <wire from="(250,420)" to="(250,450)"/>
+    <wire from="(150,370)" to="(250,370)"/>
+    <wire from="(150,450)" to="(250,450)"/>
+    <wire from="(560,390)" to="(600,390)"/>
+    <wire from="(520,350)" to="(520,380)"/>
+    <wire from="(520,400)" to="(520,430)"/>
+    <wire from="(600,310)" to="(600,390)"/>
+    <wire from="(420,350)" to="(520,350)"/>
+    <wire from="(420,430)" to="(520,430)"/>
+    <wire from="(800,180)" to="(800,210)"/>
+    <wire from="(800,230)" to="(800,260)"/>
+    <wire from="(840,220)" to="(880,220)"/>
+    <wire from="(700,180)" to="(800,180)"/>
+    <wire from="(700,260)" to="(800,260)"/>
+    <wire from="(880,140)" to="(880,220)"/>
+    <wire from="(800,340)" to="(800,370)"/>
+    <wire from="(800,390)" to="(800,420)"/>
+    <wire from="(840,380)" to="(880,380)"/>
+    <wire from="(700,340)" to="(800,340)"/>
+    <wire from="(700,420)" to="(800,420)"/>
+    <wire from="(880,300)" to="(880,380)"/>
+    <comp lib="0" loc="(150,370)" name="Pin">
+      <a name="tristate" val="false"/>
+    </comp>
+    <comp lib="0" loc="(700,180)" name="Pin">
+      <a name="tristate" val="false"/>
+    </comp>
+    <comp lib="7" loc="(476,615)" name="Text">
+      <a name="text" val="Comparador de desigualdade"/>
+    </comp>
+    <comp lib="0" loc="(180,250)" name="Pin">
+      <a name="tristate" val="false"/>
+    </comp>
+    <comp lib="0" loc="(420,180)" name="Pin">
+      <a name="tristate" val="false"/>
+    </comp>
+    <comp lib="0" loc="(880,300)" name="Pin">
+      <a name="facing" val="south"/>
+      <a name="output" val="true"/>
+    </comp>
+    <comp lib="7" loc="(892,267)" name="Text">
+      <a name="text" val="s3"/>
+    </comp>
+    <comp lib="0" loc="(360,130)" name="Pin">
+      <a name="facing" val="south"/>
+      <a name="output" val="true"/>
+    </comp>
+    <comp lib="1" loc="(290,410)" name="XOR Gate"/>
+    <comp lib="0" loc="(700,260)" name="Pin">
+      <a name="tristate" val="false"/>
+    </comp>
+    <comp lib="0" loc="(700,340)" name="Pin">
+      <a name="tristate" val="false"/>
+    </comp>
+    <comp lib="0" loc="(700,420)" name="Pin">
+      <a name="tristate" val="false"/>
+    </comp>
+    <comp lib="0" loc="(420,430)" name="Pin">
+      <a name="tristate" val="false"/>
+    </comp>
+    <comp lib="7" loc="(892,107)" name="Text">
+      <a name="text" val="s2"/>
+    </comp>
+    <comp lib="7" loc="(612,277)" name="Text">
+      <a name="text" val="s4"/>
+    </comp>
+    <comp lib="1" loc="(840,220)" name="XOR Gate"/>
+    <comp lib="7" loc="(342,297)" name="Text">
+      <a name="text" val="s5"/>
+    </comp>
+    <comp lib="0" loc="(880,140)" name="Pin">
+      <a name="facing" val="south"/>
+      <a name="output" val="true"/>
+    </comp>
+    <comp lib="0" loc="(180,170)" name="Pin">
+      <a name="tristate" val="false"/>
+    </comp>
+    <comp lib="7" loc="(372,97)" name="Text">
+      <a name="text" val="s0"/>
+    </comp>
+    <comp lib="1" loc="(560,220)" name="XOR Gate"/>
+    <comp lib="0" loc="(420,350)" name="Pin">
+      <a name="tristate" val="false"/>
+    </comp>
+    <comp lib="1" loc="(320,210)" name="XOR Gate"/>
+    <comp lib="1" loc="(560,390)" name="XOR Gate"/>
+    <comp lib="0" loc="(330,330)" name="Pin">
+      <a name="facing" val="south"/>
+      <a name="output" val="true"/>
+    </comp>
+    <comp lib="0" loc="(150,450)" name="Pin">
+      <a name="tristate" val="false"/>
+    </comp>
+    <comp lib="7" loc="(467,658)" name="Text">
+      <a name="text" val="Se pelo menos uma das saidas (Sn) for igual a 1, os numeros são distintos"/>
+    </comp>
+    <comp lib="1" loc="(840,380)" name="XOR Gate"/>
+    <comp lib="0" loc="(420,260)" name="Pin">
+      <a name="tristate" val="false"/>
+    </comp>
+    <comp lib="7" loc="(387,702)" name="Text">
+      <a name="text" val="Teste com os numeros 100101 e 100111"/>
+    </comp>
+    <comp lib="7" loc="(612,107)" name="Text">
+      <a name="text" val="s1"/>
+    </comp>
+    <comp lib="0" loc="(600,140)" name="Pin">
+      <a name="facing" val="south"/>
+      <a name="output" val="true"/>
+    </comp>
+    <comp lib="0" loc="(600,310)" name="Pin">
+      <a name="facing" val="south"/>
+      <a name="output" val="true"/>
+    </comp>
+  </circuit>
+</project>

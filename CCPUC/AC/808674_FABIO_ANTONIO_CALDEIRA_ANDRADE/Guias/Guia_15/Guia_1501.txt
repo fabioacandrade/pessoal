@@ -1,0 +1,28 @@
+// Guia_1501.txt
+// 808674 - Fábio Andrade
+//
+// Calcular dado04 = dado01 + dado02 - dado03
+// Armazenar dado01 em 0100
+// Armazenar dado02 em 0101
+// Armazenar dado03 em 0102
+// Armazenar o resultado em 0103
+// Área de código ; Significado // Comentário
+LXI H, dado01 ; HL <- addr(dado01) // Endereço do dado01
+MOV A, M ; A <- MEM[HL] // A = MEM[dado01]
+STA 0100 ; MEM[0100] <- A // MEM[0100] = A (Armazenar dado01)
+INX H ; HL <- HL+1 // Endereço do dado02
+MOV A, M ; A <- MEM[HL] // A = MEM[dado02]
+STA 0101 ; MEM[0101] <- A // MEM[0101] = A (Armazenar dado02)
+INX H ; HL <- HL+1 // Endereço do dado03
+MOV A, M ; A <- MEM[HL] // A = MEM[dado03]
+STA 0102 ; MEM[0102] <- A // MEM[0102] = A (Armazenar dado03)
+LDA 0100 ; A <- MEM[0100] // Carregar dado01 em A
+ADD 0101 ; A <- A + MEM[0101] // A = dado01 + dado02
+SUB 0102 ; A <- A - MEM[0102] // A = (dado01 + dado02) - dado03
+STA 0103 ; MEM[0103] <- A // MEM[0103] = A (Armazenar o resultado em dado04)
+HLT ; Halt // Parar
+// Área de dados
+dado01: 02h ; primeiro dado em hexadecimal
+dado02: 03h ; segundo dado em hexadecimal
+dado03: 01h ; terceiro dado em hexadecimal
+dado04: 00h ; resultado em hexadecimal

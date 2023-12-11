@@ -1,0 +1,13 @@
+Fábio Andrade - 808674
+
+
+a)  PoS(Da) = AC
+b) PoS(Ja) = AC
+ Pos(Ka) = (A' + C')
+c)
+PoS(Ta) = (A'+ C')
+PoS(Sb) = (A' + B' + C')(A'+ B + C)(A+B)
+PoS(Rb) = (B' + C)(A'+B+C')
+PoS(Jb) = (B'+C')
+PoS(Kb) = (A' + B + C') (A + B + C)
+PoS(Tb) = (B' + C')(A' + B + C')*(A + B+ C)

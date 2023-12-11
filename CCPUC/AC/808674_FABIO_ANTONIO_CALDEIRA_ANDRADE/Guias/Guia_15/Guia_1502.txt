@@ -1,0 +1,33 @@
+// Guia_1502.txt
+// 808674 - Fábio Andrade
+//
+// Calcular dado04 = dado01 - dado02 + dado03
+// Usar dados com 16 bits (sinal+amplitude) e complemento de 2 para subtração.
+//
+// Area de código ; Significado // Comentario
+ LXI H, dado01 ; HL <- addr(dado01) // endereco do dado01
+ MOV A, M ; A <- MEM [HL] // A = MEM [dado01]
+ MOV B, A ; B <- A (salva dado01 temporariamente)
+ MOV A, B ; A <- B (recupera dado01)
+ SUI 80h ; A <- A - 80h (converte dado01 para complemento de 2)
+ MOV B, A ; B <- A (salva dado01 em complemento de 2)
+ INX H ; HL <- HL+1 // endereco do dado02
+ MOV A, M ; A <- MEM [HL] // A = MEM [dado02]
+ MOV C, A ; C <- A (salva dado02 temporariamente)
+ MOV A, C ; A <- C (recupera dado02)
+ SUI 80h ; A <- A - 80h (converte dado02 para complemento de 2)
+ MOV C, A ; C <- A (salva dado02 em complemento de 2)
+ MOV A, B ; A <- B (recupera dado01 em complemento de 2)
+ ADD C ; A <- A + dado02 em complemento de 2
+ MOV B, A ; B <- A (salva o resultado temporariamente)
+ INX H ; HL <- HL+1 // endereco do dado03
+ MOV A, M ; A <- MEM [HL] // A = MEM [dado03]
+ ADD B ; A <- A + resultado em complemento de 2
+ STA dado04 ; MEM [dado04] <- A // MEM [dado04] = A
+ HLT ; halt // parar
+
+// Area de dados
+ dado01: 0200h ; primeiro dado em hexadecimal (16 bits)
+ dado02: 0300h ; segundo dado em hexadecimal (16 bits)
+ dado03: 0000h ; terceiro dado em hexadecimal (16 bits)
+ dado04: 0000h ; resultado em hexadecimal (16 bits)

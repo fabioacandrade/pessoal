@@ -1,0 +1,22 @@
+// Guia_1506.txt
+// 808674 - Fábio Andrade
+//
+// Calcular dado03 = 3 * dado01 - 2 * dado02
+// Usar dados com 8 bits.
+//
+// Area de código ; Significado // Comentario
+ LXI H, dado01 ; HL <- addr(dado01) // endereco do dado01
+ MOV A, M ; A <- MEM [HL] // A = MEM [dado01]
+ X3 ; A <- A * 3 (multiplicação por 3)
+ INX H ; HL <- HL+1 // endereco do dado02
+ MOV B, M ; B <- MEM [HL] // B = MEM [dado02]
+ X2 ; B <- B * 2 (multiplicação por 2)
+ SUB B ; A <- A - B (resultado da expressão)
+ INX H ; HL <- HL+1 // endereco do dado03
+ STA dado03 ; MEM [dado03] <- A // MEM [dado03] = A
+ HLT ; halt // parar
+
+// Area de dados
+ dado01: 05h ; primeiro dado em hexadecimal
+ dado02: 03h ; segundo dado em hexadecimal
+ dado03: 00h ; resultado em hexadecimal

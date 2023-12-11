@@ -1,0 +1,33 @@
+; Guia_1605.txt
+; 808674 - Fábio Andrade
+;
+; Programa para converter um valor em BCD (Binary Coded Decimal) para o hexadecimal equivalente
+;
+JMP MAIN ; Desvio para a área principal do programa
+
+; Função para converter BCD para hexadecimal
+; @param A é o valor em BCD
+MAIN: LXI H, 0050 ; HL = 0050h (endereço de dado01, valor em BCD)
+MOV A, M ; A = MEM[HL] (carrega o valor em BCD)
+
+CALL BCD_TO_HEX ; Chama a função de conversão
+
+STA 0052 ; MEM[0052] = A (armazena o resultado em hexadecimal)
+HLT ; Termina a execução do programa
+
+; Função de conversão de BCD para hexadecimal
+; @param A é o valor em BCD
+BCD_TO_HEX: MOV B, A ; B = A (cópia do valor em BCD)
+ANI 0FH ; Limpa os bits superiores, mantém apenas os bits inferiores (LOW)
+DAA ; Ajusta para o formato BCD
+MOV C, A ; C = A (valor em hexadecimal)
+
+MOV A, B ; A = B (recupera a cópia do valor em BCD)
+ANI F0H ; Mantém apenas os bits superiores (HI)
+RAR ; Rotação para a direita (shift right)
+RAR ; Rotação para a direita (shift right)
+RAR ; Rotação para a direita (shift right)
+RAR ; Rotação para a direita (shift right)
+ADD C ; Soma o valor convertido (HI) ao valor em hexadecimal (LOW)
+
+RET ; Retorna com o resultado em A

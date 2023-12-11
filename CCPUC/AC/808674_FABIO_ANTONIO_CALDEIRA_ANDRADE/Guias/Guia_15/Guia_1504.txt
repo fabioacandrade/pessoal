@@ -1,0 +1,26 @@
+// Guia_1504.txt
+// Fábio Andrade - 808674
+//
+// Calcular dado03 = 4 * (dado01 - 2 * dado02)
+// Usar dados com 8 bits.
+// DICA: Para o dobro, somar o acumulador com ele mesmo.
+//
+// Area de código ; Significado // Comentario
+ LXI H, dado01 ; HL <- addr(dado01) // endereco do dado01
+ MOV A, M ; A <- MEM [HL] // A = MEM [dado01]
+ INX H ; HL <- HL+1 // endereco do dado02
+ MOV B, M ; B <- MEM [HL] // B = MEM [dado02]
+ DAD B ; HL <- HL + BC (dobro de dado02)
+ MOV B, M ; B <- MEM [HL] // B = MEM [dobro de dado02]
+ DAD B ; HL <- HL + BC (quádruplo de dado02)
+ SUB M ; A <- A - MEM [HL] (A - quádruplo de dado02)
+ XCHG ; Troca HL com DE
+ MOV D, A ; D <- A (salva o resultado temporariamente)
+ XCHG ; Troca DE com HL
+ STA dado03 ; MEM [dado03] <- D // MEM [dado03] = D
+ HLT ; halt // parar
+
+// Area de dados
+ dado01: 05h ; primeiro dado em hexadecimal
+ dado02: 03h ; segundo dado em hexadecimal
+ dado03: 00h ; resultado em hexadecimal

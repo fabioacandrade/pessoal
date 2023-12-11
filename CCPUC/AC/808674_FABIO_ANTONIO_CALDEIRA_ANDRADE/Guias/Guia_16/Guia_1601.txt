@@ -1,0 +1,38 @@
+; Guia_1601.txt
+; 808674 - Fábio Andrade
+;
+; Programa para calcular o produto (IMUL) de dois dados de 8 bits cada
+; Dados de entrada: dado01, dado02
+; Resultado: dado03 = dado01 * dado02
+;
+JMP MAIN ; Desvio para a área principal do programa
+
+; Função para realizar a multiplicação (IMUL)
+; A função recebe os dados em A (dado01) e B (dado02) e retorna o resultado em A
+; @return A (resultado)
+; @param A (dado01)
+; @param B (dado02)
+MAIN: LXI H, 0050 ; HL = 0050h (endereço de dado01)
+MOV A, M ; A = MEM[HL] (carrega dado01)
+INX H ; HL = HL + 1 (avança para dado02)
+MOV B, M ; B = MEM[HL] (carrega dado02)
+
+CALL IMUL ; Chama a função de multiplicação
+STA 0052 ; MEM[0052] = A (armazena o resultado em dado03)
+HLT ; Termina a execução do programa
+
+; Função de multiplicação (IMUL)
+; A função recebe os dados em A (dado01) e B (dado02) e retorna o resultado em A
+; @return A (resultado)
+; @param A (dado01)
+; @param B (dado02)
+IMUL: MVI C, 00 ; C = 0 (inicializa o acumulador)
+MVI D, 08 ; D = 8 (número de bits a serem multiplicados)
+
+LOOP: RLC ; Rotação para a esquerda (shift left)
+JNC NO_ADD ; Se não houver carry, pula para NO_ADD
+ADD B ; Soma B ao acumulador
+NO_ADD: DCR D ; Decrementa o contador de bits
+JNZ LOOP ; Se D != 0, repete o loop
+
+RET ; Retorna com o resultado em A
