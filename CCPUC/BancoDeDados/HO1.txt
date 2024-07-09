@@ -1,0 +1,71 @@
+Fábio Antônio Caldeira Andrade - 808674
+1)São conjuntos de dados relacionados e suas respectivas formas de acesso e organização, compostos por
+coleção de dados, estrutura lógica e software
+
+2)O SBD é composto por: SGBD (software de compilação e otimização, software de acesso ao repositório), definição do banco de dados e 
+pelo banco de dados.
+
+3)Eles interagem submetendo consultas, as quais são interpretadas pelo sistema, que realiza as otimizações necessárias e recupera os dados a partir dos 
+repositórios sob seu controle.
+
+4)Banco de dados é uma coleção de Dados (simbolos,sinais e códigos) organizados, um exemplo é o MySQL (https://www.mysql.com/).
+
+5)Finalidade: propósito especifico, Realidade: representam o "mundo real", Coerência: mantêm a coerência lógica da coleção e o compartilhamento: provêm compartilhamento
+de dados.
+
+6)1.Especificação,2.Análise de requisitos,3.Projeto Conceitual,4.Projeto Lógico, 5.Projeto Físico.
+
+7)Coleção de programas (software) que permitem aos usuários criar e manter BDs
+
+8) 1.Definir → especificar tipos, estruturas e restrições armazenadas sob forma
+de metadados no catálogo (dicionário) do sistema
+2.Construir → armazenar dados em meio controlado pelo SGBD
+3.Manipular → inserir, remover, modificar e recuperar dados
+4.Compartilhar → prover acesso simultâneo a múltiplos usuários
+
+9)Monousuário → acesso por múltiplos usuários não requerido
+Baixa complexidade → aplicações muito simples e bem definidas
+Requisitos rigorosos → aplicações de tempo real, de alta escalabilidade e
+sistemas embarcados com capacidade de armazenamento limitada
+Alta especialização → aplicações que demandam recursos que a
+generalidade oferecida pelo SGBD para definição e processamento de dados
+não suporta.
+Custo proibitivo → impossibilidade de investimento inicial significativo em
+hardware, software e treinamento.
+
+10)Estrutura lógica que determina a forma como os dados são armazenados, organizados e manipulados.
+
+11)Alto nivel: Conceitual: representa as estruturas como os usuários a percebem
+Médio: Representativo: Representa detalhando aspectos de implementação
+Baixo: Fisíco: representa detalhando aspectos de armazenamento fisíco
+
+12) É conhecido como metadados do banco de dados(descrição do mesmo), especificado no projeto e nao costuma mudar com frequência.
+
+13) São conjuntos de dados armazenados em determinado momento:
+Estado Vazio → esquema especificado, mas nenhum dado armazenado
+Estado Inicial → BD carregado (populado) com dados inicias
+Estado se altera ao se inserir, remover ou modificar o valor de um item
+
+14)
+Abordagem que permite visualização do esquema em diferentes níveis:
+Autodescrição:metadados descritivos em diferentes níveis de abstração,
+de acordo com características estruturais
+Suporte a Múltiplas Visões: usuários e aplicações têm acesso restrito a
+porções do BD suficientes para atender suas necessidades
+Independência de Aplicação: estrutura do BD armazenada separadamente
+de aplicações, garantindo que alterações na estrutura não necessariamente
+levem a mudanças em aplicações
+
+15)
+Nivel externo: implementado com bannco de dados representativo
+Nivel conceitual: Oculta detalhes de armazenamento físico
+Nivel Interno: Descrição de detalhes de armazenamento de dados e de caminhos de acesso
+
+16)Transformação de requisições e resultados entre niveis
+
+17)Capacidade de se alterar o esquema em um nível sem precisar alterar o esquema
+no nível adjacente superior
+
+18)É uma linguagem especifica projetada para interagir com o Banco de dados.
+
+19)VDL, DDL, SDL e DML
